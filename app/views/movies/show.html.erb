@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= @movie.title %></strong>
+  <div class="video-url"><%= @movie.url %></div>
+</p>
+<div id="youtube"></div>
+<button id="prev">10秒前へ</button>
+<button id="next">10秒先へ</button>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
+
+<%= form_for( [@movie,@comment],remote:true) do |f| %>
+<%= f.label 'コメント' %>
+<%= f.text_area :text,placeholder:'コメント' %>
+<%= f.button '送信',id:'comment_button' %>
+  <%- @comments.each do |c| %>
+    <p><%= c.text %></p>
+  <% end %>
+<% end %>

@@ -1,0 +1,27 @@
+<%= form_for(movie) do |f| %>
+  <% if movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% movie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="movie-form">
+    <div class="field">
+      <%= f.label 'タイトル' %>
+      <%= f.text_field :title,placeholder:'タイトル' %>
+    </div>
+    <div class="field">
+      <%= f.label 'URL'%>
+      <%= f.text_field :url ,placeholder:'www.youtube.com/watch...'%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit '送信' %>
+    </div>
+  </div>
+<% end %>

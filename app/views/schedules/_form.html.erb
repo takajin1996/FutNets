@@ -1,0 +1,31 @@
+<%= form_for(schedule) do |f| %>
+  <% if schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+      <ul>
+      <% schedule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="practice-form">
+    <div class="field">
+      <%= f.label '場所' %>
+      <%= f.text_field :place,placeholder:'○○体育館'%>
+    </div>
+    <div class="field">
+      <%= f.label '概要' %>
+      <%= f.text_field :what ,placeholder:'練習、公式戦'%>
+    </div>
+    <div class="field">
+      <%= f.label '日程' %>
+      <%= f.datetime_select :training %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit '送信' %>
+    </div>
+</div>
+<% end %>

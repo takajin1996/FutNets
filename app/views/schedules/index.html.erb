@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>スケジュール</h1>
+
+<div class="practice-list">
+    <% @schedules.each do |schedule| %>
+          <div class="practice-content">
+            <span><%= schedule.training %></span>
+            <span><%=schedule.what %></span>
+            <div class="crud">
+              <span><%= link_to schedule.place, schedule %></span>
+              <span><%= link_to '編集', edit_schedule_path(schedule) %></span>
+              <span><%= link_to '消去', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+            </div>
+          </div>
+    <% end %>
+</div>
+<br>
+
+<%= link_to 'スケジュールを作成する', new_schedule_path %>

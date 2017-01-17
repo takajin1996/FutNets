@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elreina</title>
+    <%= csrf_meta_tags %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>FutNS</h1>
+
+        <ul>
+          <% if user_signed_in? %>
+          <li><%= link_to 'スケジュール',{:controller=>:schedules,:action=>:index}%></l1>
+          <li><%= link_to '動画',{:controller=>:movies,:action=>:index}%></li>
+          <li><%= link_to 'ログアウト',destroy_user_session_path,method: :delete %>
+          <% else %>
+          <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <% end %>
+        </ul>
+    </header>
+    <div class="yield">
+    <%= yield %>
+    </div>
+  </body>
+</html>
