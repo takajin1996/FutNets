@@ -91,18 +91,27 @@ $(function() {
     var postUrl = $("#new_comment").attr("action");
     var text = $("#comment_text").val();
     var carrentTime = $("#comment_text").attr('defaultValue');
-    var data_ = carrentTime+':' +text
-    console.log(data_);
+    var m = Math.floor(carrentTime/60);
+    var s = Math.floor(carrentTime%60);
+    var data_ = m+'分'+s+'秒'+':'+text;
+    var time = m+'分'+s+'秒'
+    console.log(text);
     $.ajax({
       type: "post",
       url: postUrl,
-      data: data_,
+      data: {
+        comment:{
+          text:text,
+          time:time,
+        }
+      },
       dataType: "json",
       cache: true,
     })
     .done(function(data){
-      $("#comment_text").val();
-
+      console.log(data);
+      $("#comment_text").val("");
+      $(".time").append("<p>"+ time +":<span>"+ text +"</span></p>");
     })
     .fail(function(jqXHR){
       alert("error")

@@ -15,7 +15,9 @@
 <%= f.label 'コメント' %>
 <%= f.text_area :text,placeholder:'コメント' %>
 <%= f.button '送信',id:'comment_button' %>
+<div class="time">
   <%- @comments.each do |c| %>
-    <p><%= c.text %></p>
+    <p><span><%= c.time %></span>:<%= c.text %></p>
   <% end %>
+</div>
 <% end %>

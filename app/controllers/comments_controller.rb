@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     end
   end
   def comment_params
-    params.require(:comment).permit(:text,:movie_id)
+    params.require(:comment).permit(:text,:time,:movie_id)
   end
 
 end
